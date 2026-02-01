@@ -1,34 +1,35 @@
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 
-noBtn.style.transition = "all 0.3s ease"; // smooth movement
+// Smooth teleporting NO button
+noBtn.style.transition = "all 0.3s ease";
 
-// NO button teleport
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 120);
-  const y = Math.random() * (window.innerHeight - 60);
+  const x = Math.random() * (window.innerWidth - 150);
+  const y = Math.random() * (window.innerHeight - 80);
 
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 });
 
-// YES button
+// YES button click = GIF + message
 yesBtn.addEventListener("click", () => {
   document.body.innerHTML = `
     <div style="
       height:100vh;
+      width:100vw;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      background:linear-gradient(135deg,#ff4d6d,#845ec2);
+      text-align:center;
+      background:linear-gradient(135deg,#ff9a9e,#fbc2eb,#fad0c4);
       color:white;
       font-family:Poppins, Arial;
-      text-align:center;
     ">
-      <h1>YAYYYY!!! 💖🎉</h1>
-      <h2>Devi, you’re my Valentine 😍</h2>
-      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="260">
+      <h1 style="font-size:14vw;">YAYYYY!!! 💖🎉</h1>
+      <h2 style="font-size:7vw;">Devi, you’re my Valentine 😍</h2>
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="60%">
     </div>
   `;
 });
@@ -45,4 +46,3 @@ setInterval(() => {
 
   setTimeout(() => heart.remove(), 5000);
 }, 300);
-
