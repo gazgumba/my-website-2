@@ -1,18 +1,18 @@
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 
-// Smooth teleporting NO button
+// Smooth NO button teleport
 noBtn.style.transition = "all 0.3s ease";
 
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 150);
-  const y = Math.random() * (window.innerHeight - 80);
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 });
 
-// YES button click = GIF + message
+// YES button click
 yesBtn.addEventListener("click", () => {
   document.body.innerHTML = `
     <div style="
@@ -23,7 +23,7 @@ yesBtn.addEventListener("click", () => {
       justify-content:center;
       align-items:center;
       text-align:center;
-      background:linear-gradient(135deg,#ff9a9e,#fbc2eb,#fad0c4);
+      background: url('https://images.unsplash.com/photo-1614282460388-fd81e3f6b373?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
       color:white;
       font-family:Poppins, Arial;
     ">
@@ -34,11 +34,12 @@ yesBtn.addEventListener("click", () => {
   `;
 });
 
-// Floating hearts
+// Floating emojis/hearts
+const emojis = ["💖","❤️","😍","💘","💝","💕"];
 setInterval(() => {
   const heart = document.createElement("div");
   heart.classList.add("heart");
-  heart.innerHTML = "💖";
+  heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.animationDuration = (3 + Math.random() * 3) + "s";
 
