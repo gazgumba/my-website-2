@@ -1,30 +1,18 @@
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 
-// NO button runs away
+noBtn.style.transition = "all 0.3s ease"; // smooth movement
+
+// NO button teleport
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 100 - 50;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 });
 
-// Floating hearts
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerText = "💖";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = Math.random() * 3 + 3 + "s";
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
-}
-
-setInterval(createHeart, 300);
-
-// YES button celebration
+// YES button
 yesBtn.addEventListener("click", () => {
   document.body.innerHTML = `
     <div style="
@@ -33,15 +21,28 @@ yesBtn.addEventListener("click", () => {
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      background:linear-gradient(135deg,#ff758c,#ff7eb3);
+      background:linear-gradient(135deg,#ff4d6d,#845ec2);
       color:white;
+      font-family:Poppins, Arial;
       text-align:center;
-      font-family:Arial;
     ">
-      <h1 style="font-size:40px;">YAYYYY!!! 🎉💘</h1>
-      <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif" width="200">
-      <p style="font-size:22px;">Devi said YES 😍</p>
-      <p>You just made my whole day ❤️</p>
+      <h1>YAYYYY!!! 💖🎉</h1>
+      <h2>Devi, you’re my Valentine 😍</h2>
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="260">
     </div>
   `;
 });
+
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
+
